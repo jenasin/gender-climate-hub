@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="cs">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gender & Climate Intelligence Hub | AI Research Platform</title>
+    <title>Gender & Climate Intelligence Hub | Multi-source ReACT Agent Platform</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,400;0,500;0,600;0,700;1,400&family=IBM+Plex+Sans:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -22,6 +22,8 @@
             --slate-700: #334155;
             --slate-800: #1e293b;
             --slate-900: #0f172a;
+            --blue-600: #2563eb;
+            --blue-700: #1d4ed8;
         }
 
         * {
@@ -48,11 +50,11 @@
             background: var(--slate-100);
             padding: 0.2em 0.4em;
             border-radius: 4px;
-            font-size: 0.9em;
+            font-size: 0.875em;
         }
 
         a {
-            color: #2563eb;
+            color: var(--blue-600);
             text-decoration: none;
         }
 
@@ -61,16 +63,16 @@
         }
 
         .container {
-            max-width: 1200px;
+            max-width: 1100px;
             margin: 0 auto;
             padding: 0 24px;
         }
 
         /* Header */
         header {
-            background: linear-gradient(135deg, var(--slate-900) 0%, var(--slate-800) 100%);
+            background: linear-gradient(135deg, var(--slate-900) 0%, #1a2744 100%);
             color: white;
-            padding: 80px 0 100px;
+            padding: 100px 0 120px;
             position: relative;
             overflow: hidden;
         }
@@ -82,50 +84,65 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.02'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
         }
 
         .header-content {
             position: relative;
             z-index: 1;
+            text-align: center;
         }
 
-        .badge {
+        .conference-badge {
             display: inline-block;
-            background: rgba(255,255,255,0.1);
-            border: 1px solid rgba(255,255,255,0.2);
-            padding: 6px 16px;
-            border-radius: 20px;
+            background: rgba(59, 130, 246, 0.2);
+            border: 1px solid rgba(59, 130, 246, 0.4);
+            color: #93c5fd;
+            padding: 8px 20px;
+            border-radius: 24px;
             font-size: 0.85rem;
-            margin-bottom: 24px;
-            letter-spacing: 0.5px;
+            margin-bottom: 32px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            font-weight: 500;
         }
 
         header h1 {
-            font-size: 3.5rem;
+            font-size: 3.75rem;
             color: white;
-            margin-bottom: 20px;
-            line-height: 1.2;
+            margin-bottom: 24px;
+            line-height: 1.15;
+            letter-spacing: -0.02em;
         }
 
-        header p {
-            font-size: 1.25rem;
+        .subtitle {
+            font-size: 1.5rem;
             color: var(--slate-300);
+            margin-bottom: 16px;
+            font-family: var(--font-serif);
+            font-style: italic;
+        }
+
+        header .description {
+            font-size: 1.1rem;
+            color: var(--slate-400);
             max-width: 700px;
-            margin-bottom: 32px;
+            margin: 0 auto 40px;
+            line-height: 1.8;
         }
 
         .cta-buttons {
             display: flex;
             gap: 16px;
+            justify-content: center;
             flex-wrap: wrap;
         }
 
         .btn {
             display: inline-flex;
             align-items: center;
-            gap: 8px;
-            padding: 14px 28px;
+            gap: 10px;
+            padding: 16px 32px;
             border-radius: 8px;
             font-weight: 500;
             font-size: 1rem;
@@ -142,50 +159,106 @@
         .btn-primary:hover {
             background: var(--slate-100);
             text-decoration: none;
+            transform: translateY(-1px);
         }
 
         .btn-secondary {
             background: transparent;
             color: white;
-            border: 1px solid rgba(255,255,255,0.3);
+            border: 1px solid rgba(255,255,255,0.25);
         }
 
         .btn-secondary:hover {
-            background: rgba(255,255,255,0.1);
+            background: rgba(255,255,255,0.08);
             text-decoration: none;
+        }
+
+        /* Abstract Section */
+        .abstract {
+            background: white;
+            border-bottom: 1px solid var(--slate-200);
+            padding: 64px 0;
+        }
+
+        .abstract-content {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .abstract h2 {
+            font-size: 1.75rem;
+            margin-bottom: 24px;
+            color: var(--slate-800);
+        }
+
+        .abstract p {
+            font-size: 1.125rem;
+            line-height: 1.9;
+            color: var(--slate-600);
+            font-family: var(--font-serif);
         }
 
         /* Data Sources */
         .sources-section {
-            background: white;
-            border-bottom: 1px solid var(--slate-200);
+            background: var(--slate-100);
             padding: 48px 0;
+            border-bottom: 1px solid var(--slate-200);
+        }
+
+        .sources-header {
+            text-align: center;
+            margin-bottom: 32px;
+        }
+
+        .sources-header h3 {
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--slate-500);
+            font-family: var(--font-sans);
+            font-weight: 600;
         }
 
         .sources-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            grid-template-columns: repeat(6, 1fr);
             gap: 16px;
+        }
+
+        @media (max-width: 900px) {
+            .sources-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        @media (max-width: 500px) {
+            .sources-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
         }
 
         .source-card {
             display: flex;
+            flex-direction: column;
             align-items: center;
-            gap: 12px;
-            padding: 16px;
-            background: var(--slate-50);
+            gap: 8px;
+            padding: 20px 12px;
+            background: white;
             border-radius: 12px;
             border: 1px solid var(--slate-200);
+            text-align: center;
         }
 
         .source-icon {
-            font-size: 1.5rem;
+            font-size: 2rem;
         }
 
         .source-name {
-            font-size: 0.9rem;
+            font-size: 0.8rem;
             font-weight: 500;
-            color: var(--slate-700);
+            color: var(--slate-600);
+            line-height: 1.3;
         }
 
         /* Main Content */
@@ -206,8 +279,21 @@
             margin-bottom: 48px;
         }
 
+        .section-number {
+            display: inline-block;
+            width: 32px;
+            height: 32px;
+            background: var(--slate-800);
+            color: white;
+            border-radius: 50%;
+            font-size: 0.875rem;
+            font-weight: 600;
+            line-height: 32px;
+            margin-bottom: 16px;
+        }
+
         .section-header h2 {
-            font-size: 2.5rem;
+            font-size: 2.25rem;
             margin-bottom: 16px;
         }
 
@@ -218,44 +304,47 @@
             margin: 0 auto;
         }
 
-        /* Features Grid */
-        .features-grid {
+        /* Methodology */
+        .methodology-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            grid-template-columns: repeat(3, 1fr);
             gap: 24px;
         }
 
-        .feature-card {
+        @media (max-width: 800px) {
+            .methodology-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .method-card {
             background: white;
             border-radius: 16px;
             padding: 32px;
             border: 1px solid var(--slate-200);
-            transition: box-shadow 0.2s;
+            text-align: center;
         }
 
-        .feature-card:hover {
-            box-shadow: 0 10px 40px rgba(0,0,0,0.08);
-        }
-
-        .feature-icon {
-            width: 48px;
-            height: 48px;
-            border-radius: 12px;
+        .method-icon {
+            width: 64px;
+            height: 64px;
+            border-radius: 16px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.5rem;
-            margin-bottom: 20px;
+            font-size: 1.75rem;
+            margin: 0 auto 20px;
         }
 
-        .feature-card h3 {
+        .method-card h3 {
             font-size: 1.25rem;
             margin-bottom: 12px;
         }
 
-        .feature-card p {
+        .method-card p {
             color: var(--slate-500);
             font-size: 0.95rem;
+            line-height: 1.7;
         }
 
         /* Architecture */
@@ -269,16 +358,61 @@
 
         .architecture pre {
             font-family: var(--font-mono);
-            font-size: 0.85rem;
-            line-height: 1.6;
+            font-size: 0.8rem;
+            line-height: 1.5;
             color: var(--slate-300);
+            text-align: center;
         }
 
-        /* Tools List */
+        /* Features */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 24px;
+        }
+
+        @media (max-width: 700px) {
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .feature-card {
+            background: white;
+            border-radius: 16px;
+            padding: 32px;
+            border: 1px solid var(--slate-200);
+            display: flex;
+            gap: 20px;
+        }
+
+        .feature-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.25rem;
+            flex-shrink: 0;
+        }
+
+        .feature-content h3 {
+            font-size: 1.125rem;
+            margin-bottom: 8px;
+        }
+
+        .feature-content p {
+            color: var(--slate-500);
+            font-size: 0.925rem;
+            line-height: 1.6;
+        }
+
+        /* Tools */
         .tools-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 16px;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 20px;
         }
 
         .tool-category {
@@ -291,9 +425,11 @@
         .tool-category h4 {
             font-size: 1rem;
             margin-bottom: 16px;
+            padding-bottom: 12px;
+            border-bottom: 1px solid var(--slate-100);
             display: flex;
             align-items: center;
-            gap: 8px;
+            gap: 10px;
         }
 
         .tool-list {
@@ -301,19 +437,61 @@
         }
 
         .tool-list li {
-            padding: 8px 0;
-            border-bottom: 1px solid var(--slate-100);
-            font-size: 0.9rem;
+            padding: 6px 0;
+            font-size: 0.875rem;
             color: var(--slate-600);
+            display: flex;
+            align-items: center;
+            gap: 8px;
         }
 
-        .tool-list li:last-child {
-            border-bottom: none;
+        .tool-list li::before {
+            content: '→';
+            color: var(--slate-400);
         }
 
         .tool-list code {
-            color: var(--slate-800);
+            color: var(--slate-700);
             font-weight: 500;
+            font-size: 0.825rem;
+        }
+
+        /* Example Queries */
+        .queries-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+
+        @media (max-width: 700px) {
+            .queries-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .query-card {
+            background: white;
+            border-radius: 12px;
+            padding: 24px;
+            border: 1px solid var(--slate-200);
+            border-left: 4px solid var(--blue-600);
+        }
+
+        .query-type {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--blue-600);
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .query-text {
+            font-family: var(--font-serif);
+            font-size: 1.05rem;
+            font-style: italic;
+            color: var(--slate-700);
+            line-height: 1.6;
         }
 
         /* Tech Stack */
@@ -323,7 +501,7 @@
             gap: 24px;
         }
 
-        @media (max-width: 768px) {
+        @media (max-width: 600px) {
             .tech-grid {
                 grid-template-columns: 1fr;
             }
@@ -332,63 +510,101 @@
         .tech-card {
             background: white;
             border-radius: 12px;
-            padding: 32px;
+            padding: 28px;
             border: 1px solid var(--slate-200);
         }
 
         .tech-card h4 {
-            font-size: 1.1rem;
+            font-size: 1rem;
             margin-bottom: 16px;
+            color: var(--slate-500);
+            font-family: var(--font-sans);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 600;
         }
 
         .tech-list {
             display: flex;
             flex-wrap: wrap;
-            gap: 8px;
+            gap: 10px;
         }
 
         .tech-tag {
             background: var(--slate-100);
-            padding: 6px 14px;
+            padding: 8px 16px;
             border-radius: 6px;
-            font-size: 0.85rem;
+            font-size: 0.875rem;
             color: var(--slate-700);
+            font-weight: 500;
         }
 
         /* Footer */
         footer {
             background: var(--slate-900);
             color: var(--slate-400);
-            padding: 48px 0;
+            padding: 64px 0;
+        }
+
+        .footer-content {
             text-align: center;
         }
 
-        footer p {
+        .footer-logo {
+            font-family: var(--font-serif);
+            font-size: 1.5rem;
+            color: white;
             margin-bottom: 16px;
+        }
+
+        footer p {
+            margin-bottom: 24px;
+            font-size: 0.95rem;
         }
 
         .footer-links {
             display: flex;
             justify-content: center;
-            gap: 24px;
+            gap: 32px;
+            margin-bottom: 32px;
         }
 
         .footer-links a {
             color: var(--slate-300);
+            font-weight: 500;
+        }
+
+        .footer-credits {
+            padding-top: 32px;
+            border-top: 1px solid var(--slate-800);
+            font-size: 0.85rem;
+            color: var(--slate-500);
         }
 
         /* Responsive */
         @media (max-width: 768px) {
+            header {
+                padding: 60px 0 80px;
+            }
+
             header h1 {
                 font-size: 2.5rem;
             }
 
-            .features-grid {
-                grid-template-columns: 1fr;
+            .subtitle {
+                font-size: 1.25rem;
+            }
+
+            .section-header h2 {
+                font-size: 1.875rem;
             }
 
             .architecture {
                 padding: 24px;
+            }
+
+            .architecture pre {
+                font-size: 0.65rem;
             }
         }
     </style>
@@ -396,50 +612,69 @@
 <body>
     <header>
         <div class="container header-content">
-            <div class="badge">ReACT Agent Architecture</div>
+            <div class="conference-badge">Research Platform</div>
             <h1>Gender & Climate<br>Intelligence Hub</h1>
-            <p>
-                Výzkumná platforma využívající AI agenty pro analýzu genderově-klimatických dat
-                z mezinárodních zdrojů. Transparentní chain-of-thought reasoning s automatickým plánováním.
+            <p class="subtitle">Multi-source ReACT Agent for Gender-Responsive Climate Policy Analysis</p>
+            <p class="description">
+                A research platform leveraging AI agents to analyze gender-climate data from multiple
+                international sources. Built with transparent chain-of-thought reasoning and automated planning.
             </p>
             <div class="cta-buttons">
                 <a href="https://github.com/jenasin/gender-climate-hub" class="btn btn-primary">
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
-                    GitHub Repository
+                    View Source Code
                 </a>
-                <a href="#architecture" class="btn btn-secondary">
-                    Architektura
+                <a href="#methodology" class="btn btn-secondary">
+                    Learn More
                 </a>
             </div>
         </div>
     </header>
 
+    <section class="abstract">
+        <div class="container">
+            <div class="abstract-content">
+                <h2>Abstract</h2>
+                <p>
+                    This platform demonstrates the application of ReACT (Reasoning, Acting, Observing) agent architecture
+                    for multi-dimensional policy analysis. By integrating data from six international sources including
+                    UN Women, World Bank, and UNDP, the system enables transparent, explainable AI-driven research
+                    on gender-responsive climate policies. The agent provides real-time chain-of-thought visualization,
+                    automated analysis planning, and computational tools for statistical analysis.
+                </p>
+            </div>
+        </div>
+    </section>
+
     <section class="sources-section">
         <div class="container">
+            <div class="sources-header">
+                <h3>Integrated Data Sources</h3>
+            </div>
             <div class="sources-grid">
                 <div class="source-card">
                     <span class="source-icon">🏛️</span>
-                    <span class="source-name">UN Women Climate Scorecard</span>
+                    <span class="source-name">UN Women<br>Climate Scorecard</span>
                 </div>
                 <div class="source-card">
                     <span class="source-icon">📊</span>
-                    <span class="source-name">World Bank Gender Data</span>
+                    <span class="source-name">World Bank<br>Gender Data</span>
                 </div>
                 <div class="source-card">
                     <span class="source-icon">🎯</span>
-                    <span class="source-name">UNDP Human Development</span>
+                    <span class="source-name">UNDP Human<br>Development</span>
                 </div>
                 <div class="source-card">
                     <span class="source-icon">🌡️</span>
-                    <span class="source-name">Climate Watch</span>
+                    <span class="source-name">Climate<br>Watch</span>
                 </div>
                 <div class="source-card">
                     <span class="source-icon">🏥</span>
-                    <span class="source-name">WHO Health Data</span>
+                    <span class="source-name">WHO<br>Health Data</span>
                 </div>
                 <div class="source-card">
                     <span class="source-icon">👷</span>
-                    <span class="source-name">ILO Labour Statistics</span>
+                    <span class="source-name">ILO Labour<br>Statistics</span>
                 </div>
             </div>
         </div>
@@ -447,117 +682,157 @@
 
     <main>
         <div class="container">
-            <section>
+            <section id="methodology">
                 <div class="section-header">
-                    <h2>Klíčové funkce</h2>
-                    <p>Platforma kombinuje pokročilé AI techniky s robustními datovými zdroji pro komplexní analýzu.</p>
+                    <div class="section-number">1</div>
+                    <h2>Methodology</h2>
+                    <p>The platform employs a three-stage approach to transparent AI-driven policy analysis.</p>
                 </div>
-                <div class="features-grid">
-                    <div class="feature-card">
-                        <div class="feature-icon" style="background: #fef3c7;">🧠</div>
-                        <h3>ReACT Agent</h3>
-                        <p>Transparentní reasoning s vizualizací chain-of-thought. Agent vysvětluje každý krok svého uvažování v reálném čase.</p>
+                <div class="methodology-grid">
+                    <div class="method-card">
+                        <div class="method-icon" style="background: #fef3c7;">🧠</div>
+                        <h3>Reasoning</h3>
+                        <p>The agent analyzes the query, identifies required data sources, and formulates a structured analysis plan with explicit reasoning steps.</p>
                     </div>
-                    <div class="feature-card">
-                        <div class="feature-icon" style="background: #dbeafe;">📋</div>
-                        <h3>Automatické plánování</h3>
-                        <p>Agent si vytváří strukturovaný plán analýzy a postupně jej plní. Uživatel vidí průběh v reálném čase.</p>
+                    <div class="method-card">
+                        <div class="method-icon" style="background: #dbeafe;">⚡</div>
+                        <h3>Acting</h3>
+                        <p>Executes tool calls to retrieve data, perform computations, and cross-reference information across multiple international databases.</p>
                     </div>
-                    <div class="feature-card">
-                        <div class="feature-icon" style="background: #dcfce7;">🔢</div>
-                        <h3>Výpočetní nástroje</h3>
-                        <p>Statistiky, korelace, trend analýzy, gap analýzy a kompozitní indexy. Kvantitativní výzkum na dosah.</p>
-                    </div>
-                    <div class="feature-card">
-                        <div class="feature-icon" style="background: #f3e8ff;">🔗</div>
-                        <h3>Cross-reference analýza</h3>
-                        <p>Křížová analýza dat z více zdrojů. Identifikace vzorců a korelací napříč datasety.</p>
-                    </div>
-                    <div class="feature-card">
-                        <div class="feature-icon" style="background: #fce7f3;">📡</div>
-                        <h3>Real-time streaming</h3>
-                        <p>WebSocket streaming myšlenek agenta. Sledujte reasoning v reálném čase bez čekání na výsledek.</p>
-                    </div>
-                    <div class="feature-card">
-                        <div class="feature-icon" style="background: #e0f2fe;">📚</div>
-                        <h3>Historie analýz</h3>
-                        <p>Všechny analýzy jsou ukládány s kompletním chain-of-thought. Možnost se kdykoli vrátit k předchozím výsledkům.</p>
+                    <div class="method-card">
+                        <div class="method-icon" style="background: #dcfce7;">👁️</div>
+                        <h3>Observing</h3>
+                        <p>Interprets results, identifies patterns, and synthesizes findings into actionable policy insights with full transparency.</p>
                     </div>
                 </div>
             </section>
 
-            <section id="architecture">
+            <section>
                 <div class="section-header">
-                    <h2>Architektura</h2>
-                    <p>Modulární design oddělující frontend, backend a datové vrstvy.</p>
+                    <div class="section-number">2</div>
+                    <h2>System Architecture</h2>
+                    <p>Modular design separating presentation, logic, and data layers.</p>
                 </div>
                 <div class="architecture">
 <pre>
-┌─────────────────────────────────────────────────────────────┐
-│                    React Frontend                            │
-│  ┌─────────────┐  ┌──────────────┐  ┌───────────────────┐   │
-│  │   History   │  │  Query Input │  │ Chain of Thought  │   │
-│  │   Panel     │  │              │  │   Visualization   │   │
-│  └─────────────┘  └──────────────┘  └───────────────────┘   │
-└─────────────────────────────────────────────────────────────┘
-                            │ WebSocket
-                            ▼
-┌─────────────────────────────────────────────────────────────┐
-│                   FastAPI Backend                            │
-│  ┌─────────────────────────────────────────────────────┐    │
-│  │                   ReACT Agent                        │    │
-│  │  ┌─────────┐  ┌─────────┐  ┌─────────────────────┐  │    │
-│  │  │ Planner │  │ Tools   │  │ Thought Recorder    │  │    │
-│  │  └─────────┘  └─────────┘  └─────────────────────┘  │    │
-│  └─────────────────────────────────────────────────────┘    │
-│                            │                                 │
-│  ┌─────────────────────────────────────────────────────┐    │
-│  │                   Data Banks                         │    │
-│  │  🏛️ UN Women  📊 World Bank  🎯 UNDP               │    │
-│  │  🌡️ Climate   🏥 WHO         👷 ILO                │    │
-│  └─────────────────────────────────────────────────────┘    │
-└─────────────────────────────────────────────────────────────┘
+┌───────────────────────────────────────────────────────────────────┐
+│                        React Frontend                              │
+│   ┌─────────────┐   ┌──────────────┐   ┌───────────────────┐      │
+│   │   History   │   │  Query Input │   │ Chain of Thought  │      │
+│   │    Panel    │   │              │   │   Visualization   │      │
+│   └─────────────┘   └──────────────┘   └───────────────────┘      │
+└───────────────────────────────────────────────────────────────────┘
+                              │ WebSocket (Real-time Streaming)
+                              ▼
+┌───────────────────────────────────────────────────────────────────┐
+│                       FastAPI Backend                              │
+│   ┌───────────────────────────────────────────────────────────┐   │
+│   │                      ReACT Agent                           │   │
+│   │   ┌───────────┐   ┌───────────┐   ┌───────────────────┐   │   │
+│   │   │  Planner  │   │   Tools   │   │  Thought Recorder │   │   │
+│   │   └───────────┘   └───────────┘   └───────────────────┘   │   │
+│   └───────────────────────────────────────────────────────────┘   │
+│                              │                                     │
+│   ┌───────────────────────────────────────────────────────────┐   │
+│   │                      Data Banks                            │   │
+│   │   🏛️ UN Women   📊 World Bank   🎯 UNDP                  │   │
+│   │   🌡️ Climate    🏥 WHO          👷 ILO                   │   │
+│   └───────────────────────────────────────────────────────────┘   │
+└───────────────────────────────────────────────────────────────────┘
 </pre>
                 </div>
             </section>
 
             <section>
                 <div class="section-header">
-                    <h2>Dostupné nástroje</h2>
-                    <p>Agent má k dispozici 13+ specializovaných nástrojů pro různé typy analýz.</p>
+                    <div class="section-number">3</div>
+                    <h2>Key Capabilities</h2>
+                    <p>Purpose-built features for transparent, reproducible policy research.</p>
+                </div>
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon" style="background: #fef3c7;">📋</div>
+                        <div class="feature-content">
+                            <h3>Automated Planning</h3>
+                            <p>Agent creates structured analysis plans with explicit steps, enabling reproducible research workflows.</p>
+                        </div>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon" style="background: #dbeafe;">🔢</div>
+                        <div class="feature-content">
+                            <h3>Computational Tools</h3>
+                            <p>Statistical analysis, correlation computation, trend analysis, and composite index calculation.</p>
+                        </div>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon" style="background: #f3e8ff;">🔗</div>
+                        <div class="feature-content">
+                            <h3>Cross-Reference Analysis</h3>
+                            <p>Multi-source data integration to identify patterns across different international databases.</p>
+                        </div>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon" style="background: #dcfce7;">📡</div>
+                        <div class="feature-content">
+                            <h3>Real-time Streaming</h3>
+                            <p>WebSocket-based thought streaming allows monitoring agent reasoning as it happens.</p>
+                        </div>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon" style="background: #fce7f3;">📚</div>
+                        <div class="feature-content">
+                            <h3>Analysis History</h3>
+                            <p>Complete chain-of-thought logs preserved for every analysis, enabling audit and review.</p>
+                        </div>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon" style="background: #e0f2fe;">📄</div>
+                        <div class="feature-content">
+                            <h3>Policy Brief Generation</h3>
+                            <p>Automated synthesis of findings into structured policy recommendations.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section>
+                <div class="section-header">
+                    <div class="section-number">4</div>
+                    <h2>Agent Tools</h2>
+                    <p>13+ specialized tools available for different analysis types.</p>
                 </div>
                 <div class="tools-grid">
                     <div class="tool-category">
-                        <h4>📋 Plánování</h4>
+                        <h4>📋 Planning</h4>
                         <ul class="tool-list">
-                            <li><code>create_analysis_plan</code> - Vytvoří strukturovaný plán</li>
-                            <li><code>update_plan_progress</code> - Sleduje postup plánu</li>
+                            <li><code>create_analysis_plan</code></li>
+                            <li><code>update_plan_progress</code></li>
                         </ul>
                     </div>
                     <div class="tool-category">
-                        <h4>🗄️ Data</h4>
+                        <h4>🗄️ Data Retrieval</h4>
                         <ul class="tool-list">
-                            <li><code>get_country_profile</code> - Profil země ze všech zdrojů</li>
-                            <li><code>query_bank</code> - Dotaz na specifický zdroj</li>
-                            <li><code>compare_countries</code> - Porovnání zemí</li>
-                            <li><code>get_regional_data</code> - Regionální agregace</li>
+                            <li><code>get_country_profile</code></li>
+                            <li><code>query_bank</code></li>
+                            <li><code>compare_countries</code></li>
+                            <li><code>get_regional_data</code></li>
                         </ul>
                     </div>
                     <div class="tool-category">
-                        <h4>🔢 Výpočty</h4>
+                        <h4>🔢 Computation</h4>
                         <ul class="tool-list">
-                            <li><code>compute_statistics</code> - Mean, median, std dev</li>
-                            <li><code>compute_correlation</code> - Korelační analýza</li>
-                            <li><code>compute_trend</code> - Trend analýza</li>
-                            <li><code>compute_gap_analysis</code> - Gap-to-target</li>
-                            <li><code>compute_composite_index</code> - Vážený index</li>
+                            <li><code>compute_statistics</code></li>
+                            <li><code>compute_correlation</code></li>
+                            <li><code>compute_trend</code></li>
+                            <li><code>compute_gap_analysis</code></li>
+                            <li><code>compute_composite_index</code></li>
                         </ul>
                     </div>
                     <div class="tool-category">
-                        <h4>📊 Analýzy</h4>
+                        <h4>📊 Analysis</h4>
                         <ul class="tool-list">
-                            <li><code>cross_reference_analysis</code> - Křížová analýza</li>
-                            <li><code>generate_policy_brief</code> - Policy doporučení</li>
+                            <li><code>cross_reference_analysis</code></li>
+                            <li><code>generate_policy_brief</code></li>
                         </ul>
                     </div>
                 </div>
@@ -565,7 +840,34 @@
 
             <section>
                 <div class="section-header">
-                    <h2>Tech Stack</h2>
+                    <div class="section-number">5</div>
+                    <h2>Example Research Queries</h2>
+                    <p>The agent processes complex research questions in natural language.</p>
+                </div>
+                <div class="queries-grid">
+                    <div class="query-card">
+                        <div class="query-type">Comparative Analysis</div>
+                        <p class="query-text">"Analyze the gender-climate situation in Kenya and compare it with Sweden."</p>
+                    </div>
+                    <div class="query-card">
+                        <div class="query-type">Cross-Reference</div>
+                        <p class="query-text">"Perform cross-reference analysis of climate vulnerability and gender inequality in Africa."</p>
+                    </div>
+                    <div class="query-card">
+                        <div class="query-type">Quantitative Research</div>
+                        <p class="query-text">"Calculate correlation between HDI and gender climate score for all countries."</p>
+                    </div>
+                    <div class="query-card">
+                        <div class="query-type">Policy Analysis</div>
+                        <p class="query-text">"Generate a policy brief for Indonesia with specific recommendations."</p>
+                    </div>
+                </div>
+            </section>
+
+            <section>
+                <div class="section-header">
+                    <div class="section-number">6</div>
+                    <h2>Technology Stack</h2>
                 </div>
                 <div class="tech-grid">
                     <div class="tech-card">
@@ -590,50 +892,22 @@
                     </div>
                 </div>
             </section>
-
-            <section>
-                <div class="section-header">
-                    <h2>Příklady dotazů</h2>
-                    <p>Agent dokáže zpracovat komplexní výzkumné otázky v přirozeném jazyce.</p>
-                </div>
-                <div class="features-grid">
-                    <div class="feature-card">
-                        <h3>Komparativní analýza</h3>
-                        <p style="font-family: var(--font-serif); font-style: italic; color: var(--slate-600);">
-                            „Analyzuj genderově-klimatickou situaci v Keni a porovnej ji se Švédskem."
-                        </p>
-                    </div>
-                    <div class="feature-card">
-                        <h3>Křížová analýza</h3>
-                        <p style="font-family: var(--font-serif); font-style: italic; color: var(--slate-600);">
-                            „Proveď křížovou analýzu vztahu klimatické zranitelnosti a genderové nerovnosti v Africe."
-                        </p>
-                    </div>
-                    <div class="feature-card">
-                        <h3>Kvantitativní výzkum</h3>
-                        <p style="font-family: var(--font-serif); font-style: italic; color: var(--slate-600);">
-                            „Vypočítej korelaci mezi HDI a gender climate score pro všechny země."
-                        </p>
-                    </div>
-                    <div class="feature-card">
-                        <h3>Policy analýza</h3>
-                        <p style="font-family: var(--font-serif); font-style: italic; color: var(--slate-600);">
-                            „Vytvoř policy brief pro Indonésii s konkrétními doporučeními."
-                        </p>
-                    </div>
-                </div>
-            </section>
         </div>
     </main>
 
     <footer>
         <div class="container">
-            <p>Based on UN Women Climate Scorecard methodology</p>
-            <div class="footer-links">
-                <a href="https://github.com/jenasin/gender-climate-hub">GitHub</a>
-                <a href="https://www.unwomen.org/en/climate-scorecard">UN Women Scorecard</a>
+            <div class="footer-content">
+                <div class="footer-logo">Gender & Climate Intelligence Hub</div>
+                <p>Based on UN Women Climate Scorecard methodology and international gender-climate data.</p>
+                <div class="footer-links">
+                    <a href="https://github.com/jenasin/gender-climate-hub">GitHub Repository</a>
+                    <a href="https://www.unwomen.org/en/climate-scorecard">UN Women Scorecard</a>
+                </div>
+                <div class="footer-credits">
+                    Built with Claude Code
+                </div>
             </div>
-            <p style="margin-top: 24px; font-size: 0.85rem;">Built with Claude Code</p>
         </div>
     </footer>
 </body>
