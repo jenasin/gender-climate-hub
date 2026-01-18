@@ -1,0 +1,640 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gender & Climate Intelligence Hub | AI Research Platform</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,400;0,500;0,600;0,700;1,400&family=IBM+Plex+Sans:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --font-serif: 'Crimson Pro', Georgia, serif;
+            --font-sans: 'IBM Plex Sans', -apple-system, sans-serif;
+            --font-mono: 'IBM Plex Mono', monospace;
+            --slate-50: #f8fafc;
+            --slate-100: #f1f5f9;
+            --slate-200: #e2e8f0;
+            --slate-300: #cbd5e1;
+            --slate-400: #94a3b8;
+            --slate-500: #64748b;
+            --slate-600: #475569;
+            --slate-700: #334155;
+            --slate-800: #1e293b;
+            --slate-900: #0f172a;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-sans);
+            background: var(--slate-50);
+            color: var(--slate-700);
+            line-height: 1.7;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: var(--font-serif);
+            color: var(--slate-800);
+            font-weight: 600;
+        }
+
+        code {
+            font-family: var(--font-mono);
+            background: var(--slate-100);
+            padding: 0.2em 0.4em;
+            border-radius: 4px;
+            font-size: 0.9em;
+        }
+
+        a {
+            color: #2563eb;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, var(--slate-900) 0%, var(--slate-800) 100%);
+            color: white;
+            padding: 80px 0 100px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        }
+
+        .header-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .badge {
+            display: inline-block;
+            background: rgba(255,255,255,0.1);
+            border: 1px solid rgba(255,255,255,0.2);
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            margin-bottom: 24px;
+            letter-spacing: 0.5px;
+        }
+
+        header h1 {
+            font-size: 3.5rem;
+            color: white;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+
+        header p {
+            font-size: 1.25rem;
+            color: var(--slate-300);
+            max-width: 700px;
+            margin-bottom: 32px;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 14px 28px;
+            border-radius: 8px;
+            font-weight: 500;
+            font-size: 1rem;
+            transition: all 0.2s;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-primary {
+            background: white;
+            color: var(--slate-800);
+        }
+
+        .btn-primary:hover {
+            background: var(--slate-100);
+            text-decoration: none;
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: white;
+            border: 1px solid rgba(255,255,255,0.3);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255,255,255,0.1);
+            text-decoration: none;
+        }
+
+        /* Data Sources */
+        .sources-section {
+            background: white;
+            border-bottom: 1px solid var(--slate-200);
+            padding: 48px 0;
+        }
+
+        .sources-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 16px;
+        }
+
+        .source-card {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 16px;
+            background: var(--slate-50);
+            border-radius: 12px;
+            border: 1px solid var(--slate-200);
+        }
+
+        .source-icon {
+            font-size: 1.5rem;
+        }
+
+        .source-name {
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: var(--slate-700);
+        }
+
+        /* Main Content */
+        main {
+            padding: 80px 0;
+        }
+
+        section {
+            margin-bottom: 80px;
+        }
+
+        section:last-child {
+            margin-bottom: 0;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 48px;
+        }
+
+        .section-header h2 {
+            font-size: 2.5rem;
+            margin-bottom: 16px;
+        }
+
+        .section-header p {
+            color: var(--slate-500);
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Features Grid */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 24px;
+        }
+
+        .feature-card {
+            background: white;
+            border-radius: 16px;
+            padding: 32px;
+            border: 1px solid var(--slate-200);
+            transition: box-shadow 0.2s;
+        }
+
+        .feature-card:hover {
+            box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+        }
+
+        .feature-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+        }
+
+        .feature-card h3 {
+            font-size: 1.25rem;
+            margin-bottom: 12px;
+        }
+
+        .feature-card p {
+            color: var(--slate-500);
+            font-size: 0.95rem;
+        }
+
+        /* Architecture */
+        .architecture {
+            background: var(--slate-800);
+            color: white;
+            border-radius: 16px;
+            padding: 48px;
+            overflow-x: auto;
+        }
+
+        .architecture pre {
+            font-family: var(--font-mono);
+            font-size: 0.85rem;
+            line-height: 1.6;
+            color: var(--slate-300);
+        }
+
+        /* Tools List */
+        .tools-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 16px;
+        }
+
+        .tool-category {
+            background: white;
+            border-radius: 12px;
+            padding: 24px;
+            border: 1px solid var(--slate-200);
+        }
+
+        .tool-category h4 {
+            font-size: 1rem;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .tool-list {
+            list-style: none;
+        }
+
+        .tool-list li {
+            padding: 8px 0;
+            border-bottom: 1px solid var(--slate-100);
+            font-size: 0.9rem;
+            color: var(--slate-600);
+        }
+
+        .tool-list li:last-child {
+            border-bottom: none;
+        }
+
+        .tool-list code {
+            color: var(--slate-800);
+            font-weight: 500;
+        }
+
+        /* Tech Stack */
+        .tech-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 24px;
+        }
+
+        @media (max-width: 768px) {
+            .tech-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .tech-card {
+            background: white;
+            border-radius: 12px;
+            padding: 32px;
+            border: 1px solid var(--slate-200);
+        }
+
+        .tech-card h4 {
+            font-size: 1.1rem;
+            margin-bottom: 16px;
+        }
+
+        .tech-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .tech-tag {
+            background: var(--slate-100);
+            padding: 6px 14px;
+            border-radius: 6px;
+            font-size: 0.85rem;
+            color: var(--slate-700);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--slate-900);
+            color: var(--slate-400);
+            padding: 48px 0;
+            text-align: center;
+        }
+
+        footer p {
+            margin-bottom: 16px;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 24px;
+        }
+
+        .footer-links a {
+            color: var(--slate-300);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2.5rem;
+            }
+
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .architecture {
+                padding: 24px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container header-content">
+            <div class="badge">ReACT Agent Architecture</div>
+            <h1>Gender & Climate<br>Intelligence Hub</h1>
+            <p>
+                Výzkumná platforma využívající AI agenty pro analýzu genderově-klimatických dat
+                z mezinárodních zdrojů. Transparentní chain-of-thought reasoning s automatickým plánováním.
+            </p>
+            <div class="cta-buttons">
+                <a href="https://github.com/jenasin/gender-climate-hub" class="btn btn-primary">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                    GitHub Repository
+                </a>
+                <a href="#architecture" class="btn btn-secondary">
+                    Architektura
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <section class="sources-section">
+        <div class="container">
+            <div class="sources-grid">
+                <div class="source-card">
+                    <span class="source-icon">🏛️</span>
+                    <span class="source-name">UN Women Climate Scorecard</span>
+                </div>
+                <div class="source-card">
+                    <span class="source-icon">📊</span>
+                    <span class="source-name">World Bank Gender Data</span>
+                </div>
+                <div class="source-card">
+                    <span class="source-icon">🎯</span>
+                    <span class="source-name">UNDP Human Development</span>
+                </div>
+                <div class="source-card">
+                    <span class="source-icon">🌡️</span>
+                    <span class="source-name">Climate Watch</span>
+                </div>
+                <div class="source-card">
+                    <span class="source-icon">🏥</span>
+                    <span class="source-name">WHO Health Data</span>
+                </div>
+                <div class="source-card">
+                    <span class="source-icon">👷</span>
+                    <span class="source-name">ILO Labour Statistics</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <main>
+        <div class="container">
+            <section>
+                <div class="section-header">
+                    <h2>Klíčové funkce</h2>
+                    <p>Platforma kombinuje pokročilé AI techniky s robustními datovými zdroji pro komplexní analýzu.</p>
+                </div>
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon" style="background: #fef3c7;">🧠</div>
+                        <h3>ReACT Agent</h3>
+                        <p>Transparentní reasoning s vizualizací chain-of-thought. Agent vysvětluje každý krok svého uvažování v reálném čase.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon" style="background: #dbeafe;">📋</div>
+                        <h3>Automatické plánování</h3>
+                        <p>Agent si vytváří strukturovaný plán analýzy a postupně jej plní. Uživatel vidí průběh v reálném čase.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon" style="background: #dcfce7;">🔢</div>
+                        <h3>Výpočetní nástroje</h3>
+                        <p>Statistiky, korelace, trend analýzy, gap analýzy a kompozitní indexy. Kvantitativní výzkum na dosah.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon" style="background: #f3e8ff;">🔗</div>
+                        <h3>Cross-reference analýza</h3>
+                        <p>Křížová analýza dat z více zdrojů. Identifikace vzorců a korelací napříč datasety.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon" style="background: #fce7f3;">📡</div>
+                        <h3>Real-time streaming</h3>
+                        <p>WebSocket streaming myšlenek agenta. Sledujte reasoning v reálném čase bez čekání na výsledek.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon" style="background: #e0f2fe;">📚</div>
+                        <h3>Historie analýz</h3>
+                        <p>Všechny analýzy jsou ukládány s kompletním chain-of-thought. Možnost se kdykoli vrátit k předchozím výsledkům.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section id="architecture">
+                <div class="section-header">
+                    <h2>Architektura</h2>
+                    <p>Modulární design oddělující frontend, backend a datové vrstvy.</p>
+                </div>
+                <div class="architecture">
+<pre>
+┌─────────────────────────────────────────────────────────────┐
+│                    React Frontend                            │
+│  ┌─────────────┐  ┌──────────────┐  ┌───────────────────┐   │
+│  │   History   │  │  Query Input │  │ Chain of Thought  │   │
+│  │   Panel     │  │              │  │   Visualization   │   │
+│  └─────────────┘  └──────────────┘  └───────────────────┘   │
+└─────────────────────────────────────────────────────────────┘
+                            │ WebSocket
+                            ▼
+┌─────────────────────────────────────────────────────────────┐
+│                   FastAPI Backend                            │
+│  ┌─────────────────────────────────────────────────────┐    │
+│  │                   ReACT Agent                        │    │
+│  │  ┌─────────┐  ┌─────────┐  ┌─────────────────────┐  │    │
+│  │  │ Planner │  │ Tools   │  │ Thought Recorder    │  │    │
+│  │  └─────────┘  └─────────┘  └─────────────────────┘  │    │
+│  └─────────────────────────────────────────────────────┘    │
+│                            │                                 │
+│  ┌─────────────────────────────────────────────────────┐    │
+│  │                   Data Banks                         │    │
+│  │  🏛️ UN Women  📊 World Bank  🎯 UNDP               │    │
+│  │  🌡️ Climate   🏥 WHO         👷 ILO                │    │
+│  └─────────────────────────────────────────────────────┘    │
+└─────────────────────────────────────────────────────────────┘
+</pre>
+                </div>
+            </section>
+
+            <section>
+                <div class="section-header">
+                    <h2>Dostupné nástroje</h2>
+                    <p>Agent má k dispozici 13+ specializovaných nástrojů pro různé typy analýz.</p>
+                </div>
+                <div class="tools-grid">
+                    <div class="tool-category">
+                        <h4>📋 Plánování</h4>
+                        <ul class="tool-list">
+                            <li><code>create_analysis_plan</code> - Vytvoří strukturovaný plán</li>
+                            <li><code>update_plan_progress</code> - Sleduje postup plánu</li>
+                        </ul>
+                    </div>
+                    <div class="tool-category">
+                        <h4>🗄️ Data</h4>
+                        <ul class="tool-list">
+                            <li><code>get_country_profile</code> - Profil země ze všech zdrojů</li>
+                            <li><code>query_bank</code> - Dotaz na specifický zdroj</li>
+                            <li><code>compare_countries</code> - Porovnání zemí</li>
+                            <li><code>get_regional_data</code> - Regionální agregace</li>
+                        </ul>
+                    </div>
+                    <div class="tool-category">
+                        <h4>🔢 Výpočty</h4>
+                        <ul class="tool-list">
+                            <li><code>compute_statistics</code> - Mean, median, std dev</li>
+                            <li><code>compute_correlation</code> - Korelační analýza</li>
+                            <li><code>compute_trend</code> - Trend analýza</li>
+                            <li><code>compute_gap_analysis</code> - Gap-to-target</li>
+                            <li><code>compute_composite_index</code> - Vážený index</li>
+                        </ul>
+                    </div>
+                    <div class="tool-category">
+                        <h4>📊 Analýzy</h4>
+                        <ul class="tool-list">
+                            <li><code>cross_reference_analysis</code> - Křížová analýza</li>
+                            <li><code>generate_policy_brief</code> - Policy doporučení</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <section>
+                <div class="section-header">
+                    <h2>Tech Stack</h2>
+                </div>
+                <div class="tech-grid">
+                    <div class="tech-card">
+                        <h4>Backend</h4>
+                        <div class="tech-list">
+                            <span class="tech-tag">Python 3.11+</span>
+                            <span class="tech-tag">FastAPI</span>
+                            <span class="tech-tag">Anthropic Claude API</span>
+                            <span class="tech-tag">WebSockets</span>
+                            <span class="tech-tag">Pydantic</span>
+                        </div>
+                    </div>
+                    <div class="tech-card">
+                        <h4>Frontend</h4>
+                        <div class="tech-list">
+                            <span class="tech-tag">React 18</span>
+                            <span class="tech-tag">TypeScript</span>
+                            <span class="tech-tag">Tailwind CSS</span>
+                            <span class="tech-tag">Vite</span>
+                            <span class="tech-tag">Lucide Icons</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section>
+                <div class="section-header">
+                    <h2>Příklady dotazů</h2>
+                    <p>Agent dokáže zpracovat komplexní výzkumné otázky v přirozeném jazyce.</p>
+                </div>
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <h3>Komparativní analýza</h3>
+                        <p style="font-family: var(--font-serif); font-style: italic; color: var(--slate-600);">
+                            „Analyzuj genderově-klimatickou situaci v Keni a porovnej ji se Švédskem."
+                        </p>
+                    </div>
+                    <div class="feature-card">
+                        <h3>Křížová analýza</h3>
+                        <p style="font-family: var(--font-serif); font-style: italic; color: var(--slate-600);">
+                            „Proveď křížovou analýzu vztahu klimatické zranitelnosti a genderové nerovnosti v Africe."
+                        </p>
+                    </div>
+                    <div class="feature-card">
+                        <h3>Kvantitativní výzkum</h3>
+                        <p style="font-family: var(--font-serif); font-style: italic; color: var(--slate-600);">
+                            „Vypočítej korelaci mezi HDI a gender climate score pro všechny země."
+                        </p>
+                    </div>
+                    <div class="feature-card">
+                        <h3>Policy analýza</h3>
+                        <p style="font-family: var(--font-serif); font-style: italic; color: var(--slate-600);">
+                            „Vytvoř policy brief pro Indonésii s konkrétními doporučeními."
+                        </p>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>Based on UN Women Climate Scorecard methodology</p>
+            <div class="footer-links">
+                <a href="https://github.com/jenasin/gender-climate-hub">GitHub</a>
+                <a href="https://www.unwomen.org/en/climate-scorecard">UN Women Scorecard</a>
+            </div>
+            <p style="margin-top: 24px; font-size: 0.85rem;">Built with Claude Code</p>
+        </div>
+    </footer>
+</body>
+</html>
