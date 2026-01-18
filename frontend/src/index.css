@@ -1,0 +1,152 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=IBM+Plex+Sans:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap');
+
+:root {
+  --font-sans: 'IBM Plex Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-serif: 'Crimson Pro', 'Times New Roman', Georgia, serif;
+  --font-mono: 'IBM Plex Mono', 'Fira Code', monospace;
+
+  --unwomen: #E91E63;
+  --worldbank: #1976D2;
+  --undp: #0097A7;
+  --climate: #388E3C;
+  --who: #0288D1;
+  --ilo: #F57C00;
+}
+
+body {
+  font-family: var(--font-sans);
+  @apply bg-slate-50 text-slate-800;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--font-serif);
+}
+
+code, pre, .mono {
+  font-family: var(--font-mono);
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-slate-100;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-slate-300 rounded-full;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-slate-400;
+}
+
+/* Animace */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.animate-fadeInUp {
+  animation: fadeInUp 0.3s ease-out forwards;
+}
+
+.animate-slideIn {
+  animation: slideIn 0.25s ease-out forwards;
+}
+
+/* Thought steps */
+.thought-step {
+  animation: fadeInUp 0.3s ease-out;
+}
+
+/* Typing indicator */
+@keyframes bounce {
+  0%, 60%, 100% { transform: translateY(0); }
+  30% { transform: translateY(-4px); }
+}
+
+.typing-dot {
+  animation: bounce 1.4s infinite;
+}
+
+.typing-dot:nth-child(2) { animation-delay: 0.2s; }
+.typing-dot:nth-child(3) { animation-delay: 0.4s; }
+
+/* Cards */
+.card {
+  @apply bg-white rounded-xl shadow-sm border border-slate-200;
+  transition: all 0.2s ease;
+}
+
+.card:hover {
+  @apply shadow-md;
+}
+
+/* Data source badges */
+.source-badge {
+  @apply flex items-center gap-3 px-4 py-3 bg-white rounded-lg border border-slate-200 shadow-sm;
+  transition: all 0.2s ease;
+}
+
+.source-badge:hover {
+  @apply shadow-md border-slate-300;
+  transform: translateY(-1px);
+}
+
+/* Input focus */
+input:focus, textarea:focus {
+  @apply outline-none ring-2 ring-blue-500/20 border-blue-400;
+}
+
+/* Button styles */
+.btn-primary {
+  @apply bg-blue-600 text-white px-5 py-2.5 rounded-lg font-medium;
+  @apply hover:bg-blue-700 active:bg-blue-800;
+  @apply disabled:bg-slate-300 disabled:cursor-not-allowed;
+  @apply transition-all duration-150;
+}
+
+.btn-secondary {
+  @apply bg-white text-slate-700 px-4 py-2 rounded-lg font-medium border border-slate-200;
+  @apply hover:bg-slate-50 hover:border-slate-300;
+  @apply transition-all duration-150;
+}
+
+/* Status badges */
+.status-running {
+  @apply bg-blue-50 text-blue-700 border-blue-200;
+}
+
+.status-completed {
+  @apply bg-emerald-50 text-emerald-700 border-emerald-200;
+}
+
+.status-error {
+  @apply bg-red-50 text-red-700 border-red-200;
+}
